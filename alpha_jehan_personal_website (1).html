@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The personal website of Alpha Jehan — goals, projects, and the journey of building something meaningful.">
+  <meta name="theme-color" content="#07111f">
+  <title>Alpha Jehan | Personal Website</title>
+  <style>
+    :root {
+      --bg: #060b13;
+      --panel: #0b1524;
+      --panel2: #0e1c30;
+      --blue: #38a8ff;
+      --blue2: #1677d2;
+      --text: #f3f7fc;
+      --muted: #a9bbd0;
+      --line: rgba(125, 177, 230, .18);
+      --glow: rgba(56, 168, 255, .15);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background:
+        radial-gradient(ellipse at 80% 5%, rgba(22,119,210,.18), transparent 34%),
+        radial-gradient(ellipse at 10% 45%, rgba(56,168,255,.08), transparent 28%),
+        var(--bg);
+      color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(6,11,19,.82); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 850; letter-spacing: -.04em; font-size: 1.15rem; }
+    .brand span { color: var(--blue); }
+    .navlinks { display: flex; gap: 26px; color: var(--muted); font-size: .92rem; }
+    .navlinks a:hover { color: white; }
+    .menu { display: none; }
+    .hero { min-height: 78vh; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 50px; padding: 80px 0 70px; }
+    .eyebrow { color: var(--blue); font-weight: 750; text-transform: uppercase; letter-spacing: .17em; font-size: .75rem; }
+    h1 { font-size: clamp(3rem, 7vw, 5.6rem); line-height: .98; letter-spacing: -.07em; margin: 18px 0 24px; }
+    h1 .blue { color: var(--blue); }
+    .lead { max-width: 620px; color: var(--muted); font-size: 1.1rem; }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 12px 20px; font-weight: 750; border: 1px solid var(--line); transition: .2s ease; }
+    .btn.primary { color: #04101e; background: var(--blue); border-color: var(--blue); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(--glow); }
+    .hero-card { border: 1px solid var(--line); background: linear-gradient(145deg, rgba(14,28,48,.92), rgba(7,13,23,.88)); border-radius: 28px; padding: 28px; min-height: 330px; box-shadow: 0 25px 90px rgba(0,0,0,.22); position: relative; overflow: hidden; }
+    .hero-card:before { content: ""; position: absolute; width: 260px; height: 260px; border-radius: 50%; background: var(--glow); filter: blur(5px); top: -80px; right: -80px; }
+    .monogram { position: relative; display: grid; place-items: center; width: 145px; height: 145px; border: 1px solid rgba(56,168,255,.55); border-radius: 50%; margin: 18px auto 26px; font-size: 3.1rem; font-weight: 900; letter-spacing: -.08em; color: var(--blue); box-shadow: 0 0 55px var(--glow), inset 0 0 35px rgba(56,168,255,.06); }
+    .hero-card h2 { position: relative; text-align: center; margin: 0; font-size: 1.25rem; }
+    .hero-card p { position: relative; text-align: center; color: var(--muted); margin: 8px 0 0; }
+    section { padding: 78px 0; }
+    .section-head { max-width: 680px; margin-bottom: 34px; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.055em; line-height: 1.1; margin: 10px 0 14px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { padding: 24px; background: linear-gradient(150deg, var(--panel2), var(--panel)); border: 1px solid var(--line); border-radius: 20px; }
+    .card .icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: var(--glow); color: var(--blue); font-size: 1.2rem; margin-bottom: 16px; }
+    .card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+    .card p { color: var(--muted); margin: 0; font-size: .95rem; }
+    .journey { display: grid; grid-template-columns: .75fr 1.25fr; gap: 40px; align-items: start; }
+    .statement { padding: 30px; border-left: 3px solid var(--blue); background: linear-gradient(90deg, var(--glow), transparent); border-radius: 0 18px 18px 0; font-size: 1.3rem; font-weight: 650; }
+    .steps { display: grid; gap: 14px; }
+    .step { display: flex; gap: 18px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 16px; background: rgba(11,21,36,.65); }
+    .num { color: var(--blue); font-weight: 850; }
+    .step h3 { margin: 0 0 4px; font-size: 1rem; }
+    .step p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .contact { text-align: center; border: 1px solid var(--line); border-radius: 28px; padding: 50px 24px; background: radial-gradient(ellipse at top, var(--glow), transparent 65%), var(--panel); }
+    .contact h2 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.06em; margin: 10px 0 12px; }
+    .contact p { color: var(--muted); max-width: 570px; margin: 0 auto; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: .85rem; }
+    footer .foot { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; padding: 60px 0; gap: 30px; min-height: auto; }
+      .hero-card { min-height: 280px; }
+      .grid { grid-template-columns: 1fr; }
+      .journey { grid-template-columns: 1fr; gap: 24px; }
+      .navlinks { display: none; }
+      .menu { display: inline; color: var(--muted); font-size: .85rem; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#home">ALPHA <span>JEHAN</span></a>
+        <div class="navlinks">
+          <a href="#about">About</a><a href="#focus">My Focus</a><a href="#journey">Journey</a><a href="#contact">Connect</a>
+        </div>
+        <span class="menu">Personal Website</span>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero" id="home">
+        <div>
+          <div class="eyebrow">Personal Website · Ambition · Growth</div>
+          <h1>Building my<br><span class="blue">own future.</span></h1>
+          <p class="lead">I’m Alpha Jehan. This is my space to share my goals, projects, and the journey of learning, creating, and building something meaningful.</p>
+          <div class="actions">
+            <a class="btn primary" href="#about">Explore my story</a>
+            <a class="btn" href="#journey">See my goals</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Alpha Jehan profile card">
+          <div class="monogram">AJ</div>
+          <h2>ALPHA JEHAN</h2>
+          <p>Think boldly. Learn daily. Build with purpose.</p>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-head">
+          <div class="eyebrow">A little about me</div>
+          <h2>Every big journey<br>starts with a decision.</h2>
+          <p>This website is my personal corner of the internet. I’m working toward a future shaped by knowledge, creativity, business, and consistent effort.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="icon">✦</div><h3>Curious by nature</h3><p>I enjoy learning about technology, business, and how ideas can become real projects.</p></article>
+          <article class="card"><div class="icon">↗</div><h3>Focused on growth</h3><p>Small steps, new skills, and steady progress matter more than overnight success.</p></article>
+          <article class="card"><div class="icon">◎</div><h3>Building with purpose</h3><p>My goal is to create meaningful work and opportunities for the future.</p></article>
+        </div>
+      </section>
+
+      <section id="focus">
+        <div class="section-head">
+          <div class="eyebrow">My focus</div>
+          <h2>What I’m working toward.</h2>
+          <p>These are areas I want to keep exploring and developing. This page can grow as my interests and projects grow.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="icon">⌘</div><h3>Technology & IT</h3><p>Understanding digital tools, building useful skills, and exploring new technology.</p></article>
+          <article class="card"><div class="icon">◈</div><h3>Business & ideas</h3><p>Learning how businesses work, serving people well, and developing creative ideas.</p></article>
+          <article class="card"><div class="icon">✎</div><h3>Learning & discipline</h3><p>Staying curious, improving step by step, and turning plans into action.</p></article>
+        </div>
+      </section>
+
+      <section id="journey">
+        <div class="journey">
+          <div>
+            <div class="eyebrow">The journey</div>
+            <h2 style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-.055em;line-height:1.1;margin:10px 0 20px;">Progress over<br>perfection.</h2>
+            <div class="statement">“Dream big, stay grounded, and keep showing up.”</div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="num">01</div><div><h3>Learn</h3><p>Build a strong foundation through education and practical skills.</p></div></div>
+            <div class="step"><div class="num">02</div><div><h3>Create</h3><p>Try ideas, work on projects, and learn from each experience.</p></div></div>
+            <div class="step"><div class="num">03</div><div><h3>Grow</h3><p>Keep improving, build trust, and look for meaningful opportunities.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="contact">
+          <div class="eyebrow">Connect</div>
+          <h2>Let’s build something<br><span style="color:var(--blue)">positive.</span></h2>
+          <p>This website is a work in progress. More projects and updates will be added over time.</p>
+          <div class="actions" style="justify-content:center">
+            <!-- Add a public contact or social profile link here only when you are ready. -->
+            <a class="btn primary" href="#home">Back to top ↑</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© <span id="year">2026</span> Alpha Jehan. All rights reserved.</span>
+      <span>Made with ambition · Black & Blue</span>
+    </div>
+  </footer>
+</body>
+</html>
